@@ -983,8 +983,16 @@ read -e -p "---> Enter your shop url: " -i "http://www.${DOMAIN}/"  MAGE_SITE_UR
 echo
 WHITETXT "Locale settings"
 read -e -p "---> Enter your locale: " -i "en_GB"  MAGE_LOCALE
-read -e -p "---> Enter your timezone: " -i "Europe/Paris"  MAGE_TIMEZONE
-read -e -p "---> Enter your currency: " -i "EUR"  MAGE_CURRENCY
+
+# Probably should ask what area of the world are you in, and then list the timezone info for that area, then autofill appropriate currency
+if [ $MAGE_LOCALE == "en_US" ] ; then
+  	read -e -p "---> Enter your timezone: " -i "America/Chicago"  MAGE_TIMEZONE
+	read -e -p "---> Enter your currency: " -i "USD"  MAGE_CURRENCY
+else
+  	read -e -p "---> Enter your timezone: " -i "Europe/Paris"  MAGE_TIMEZONE
+	read -e -p "---> Enter your currency: " -i "EUR"  MAGE_CURRENCY
+fi
+
 echo
 WHITETXT "============================================================================="
 echo
